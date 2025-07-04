@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Hitt - Senior Construction Estimator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 20px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .job {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .job:last-child {
+            border-bottom: none;
+        }
+
+        .job-header {
+            margin-bottom: 15px;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .duration {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .job-description {
+            margin-left: 0;
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+            list-style: none;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .job-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 4px 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .certification {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 4px solid #28a745;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .cert-id {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .volunteer-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .volunteer-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .volunteer-org {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .volunteer-desc {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .interests {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .interests p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .highlight-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .highlight-text {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .sidebar, .content {
+                padding: 30px 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Daniel Hitt</h1>
+                <p class="title">Senior Construction Estimator & Take-Off Specialist</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Pensacola, FL 32507
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        (425) 405-8450
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        paradisehomesolutions@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                        linkedin.com/in/daniel-hitt
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">Key Highlights</h2>
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <span class="highlight-number">20+</span>
+                        <span class="highlight-text">Years Experience</span>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <span class="highlight-number">410+</span>
+                        <span class="highlight-text">Projects Completed</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <span class="highlight-number">210</span>
+                        <span class="highlight-text">Avg Units Per Project</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">AI & Technology Integration</h2>
+                    <div class="skill-category">
+                        <h4>AI-Enhanced Workflows</h4>
+                        <ul class="skill-list">
+                            <li>Document Analysis & Summarization</li>
+                            <li>Cost Estimation Optimization</li>
+                            <li>Process Documentation</li>
+                            <li>Technical Writing & Communication</li>
+                            <li>Data Analysis & Reporting</li>
+                            <li>Training Material Development</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Platforms & Tools</h4>
+                        <ul class="skill-list">
+                            <li>Claude AI (Advanced User)</li>
+                            <li>ChatGPT</li>
+                            <li>Prompt Engineering</li>
+                            <li>AI-Assisted Research</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <div class="skill-category">
+                        <h4>Software Proficiency</h4>
+                        <ul class="skill-list">
+                            <li>Bluebeam (Advanced)</li>
+                            <li>Procore</li>
+                            <li>Microsoft Excel</li>
+                            <li>Planswift</li>
+                            <li>Pictometry</li>
+                            <li>MS Teams & Zoom</li>
+                            <li>AI Tools (Claude, ChatGPT)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Core Expertise</h4>
+                        <ul class="skill-list">
+                            <li>Quantity Takeoffs</li>
+                            <li>Bid Preparation</li>
+                            <li>Cost Analysis</li>
+                            <li>Blueprint Interpretation</li>
+                            <li>Change Order Evaluation</li>
+                            <li>Risk Management</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Certifications</h2>
+                    <div class="certification">
+                        <div class="cert-name">Fall Protection Training</div>
+                    </div>
+                    <div class="certification">
+                        <div class="cert-name">Respiratory Protection</div>
+                    </div>
+                    <div class="certification">
+                        <div class="cert-name">Lockout/Tagout Safety</div>
+                    </div>
+                    <div class="certification">
+                        <div class="cert-name">CPR/AED/First Aid</div>
+                        <div class="cert-id">ID: F34B849</div>
+                    </div>
+                    <div class="certification" style="border-left-color: #667eea;">
+                        <div class="cert-name">AI Technology Integration</div>
+                        <div class="cert-id">Self-Directed Learning & Application</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                        <div style="font-weight: 600; color: #333;">General Education Diploma (GED)</div>
+                        <div style="color: #666; font-size: 0.9rem;">Memphis, TN • 1996</div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <div class="summary">
+                        Seasoned Senior Construction Estimator and Take-Off Specialist with over 20 years of hands-on experience in residential and commercial projects. Expert in analyzing construction documents, preparing detailed cost estimates, and leading teams through all phases of preconstruction. Highly proficient with industry-standard tools including Bluebeam, Excel, and Procore. Progressive adopter of AI technologies for enhanced productivity, documentation, and analysis. Recognized for leadership, technical accuracy, and dedication to mentorship, communication, and client satisfaction.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Professional Experience</h2>
+                    
+                    <div class="job">
+                        <div class="job-header">
+                            <h3 class="job-title">Estimator / Take-Off Team Lead (Remote)</h3>
+                            <p class="company">DEEL Enterprises Inc. - Monroe, WA</p>
+                            <p class="duration">2022 - Present</p>
+                        </div>
+                        <ul class="job-description">
+                            <li>Lead estimator on over 410 multifamily and mixed-use projects, averaging 210 units each</li>
+                            <li>Conducted complete bid packages, cost breakdowns, and product verifications using Bluebeam and Procore</li>
+                            <li>Facilitated weekly estimator meetings to standardize processes, reduce error rates, and share insights</li>
+                            <li>Trained new estimators and collaborated with senior management to improve efficiency</li>
+                            <li>Leveraged advanced software tools to deliver precise, competitive bids within tight deadlines</li>
+                            <li>Pioneered integration of AI technologies (Claude, ChatGPT) for enhanced documentation, analysis, and process optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <h3 class="job-title">Field Measure Technician / Sales Representative</h3>
+                            <p class="company">DEEL Enterprises Inc. - Monroe, WA</p>
+                            <p class="duration">2013 - 2022</p>
+                        </div>
+                        <ul class="job-description">
+                            <li>Performed field measurements for blinds, mirrors, closet systems, and shower doors</li>
+                            <li>Led team meetings to address jobsite issues and drive improvements</li>
+                            <li>Coordinated with GCs, project managers, and installers to ensure accurate installations</li>
+                            <li>Generated leads and cultivated new clients while maintaining existing relationships</li>
+                            <li>Conducted precon meetings for scheduling and staging coordination</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <h3 class="job-title">Apartment Manager</h3>
+                            <p class="company">1221 Colby LLC - Everett, WA</p>
+                            <p class="duration">2012 - 2018</p>
+                        </div>
+                        <ul class="job-description">
+                            <li>Managed all aspects of an 8-unit residential property</li>
+                            <li>Oversaw maintenance, safety inspections, remodeling, and tenant relations</li>
+                            <li>Performed repairs, coordinated turnovers, and managed monthly rent collections</li>
+                            <li>Completed 6 unit turnovers including major remodel projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <h3 class="job-title">Installation & Repair Technician</h3>
+                            <p class="company">DEEL Enterprises Inc. - Monroe, WA</p>
+                            <p class="duration">2000 - 2008</p>
+                        </div>
+                        <ul class="job-description">
+                            <li>Installed window coverings, shelving, and bath hardware on multifamily sites</li>
+                            <li>Completed warranty repairs and troubleshooting</li>
+                            <li>Achieved "Expert Installer" status for quality and craftsmanship</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Volunteer Experience</h2>
+                    
+                    <div class="volunteer-item">
+                        <div class="volunteer-title">Skilled Maintenance Trainer</div>
+                        <div class="volunteer-org">Christian Congregation of Jehovah's Witnesses • 2019 - Present</div>
+                        <div class="volunteer-desc">
+                            Train volunteers in interior/exterior facility inspection and upkeep at local Kingdom Halls. Supervise 5-hour training sessions across multiple trades with hands-on demonstrations. Collaborate with other trainers to ensure comprehensive facility care across 5+ locations.
+                        </div>
+                    </div>
+
+                    <div class="volunteer-item">
+                        <div class="volunteer-title">Minister / Public Speaker</div>
+                        <div class="volunteer-org">Christian Congregation of Jehovah's Witnesses • 1992 - Present</div>
+                        <div class="volunteer-desc">
+                            Engage in weekly public speaking and volunteer outreach work. Focused on communication, empathy, respect, and personal growth through community interaction.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Personal Interests</h2>
+                    <div class="interests">
+                        <p>Outdoor enthusiast passionate about hiking, fishing, camping, and paddleboarding. Devoted husband and father committed to integrity, hard work, and continuous improvement. Passionate about homebuilding, craftsmanship, and service to others.</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
